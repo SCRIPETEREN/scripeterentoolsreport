@@ -1,5 +1,5 @@
 PROVIDERS = {
-    # ========== SOSIAL MEDIA (50+) ==========
+    # ===== SOSIAL MEDIA (50+) =====
     "tiktok": {"category": "sosial_media", "method": "email", "target": "report@tiktok.com"},
     "instagram": {"category": "sosial_media", "method": "email", "target": "support@instagram.com"},
     "facebook": {"category": "sosial_media", "method": "email", "target": "abuse@facebook.com"},
@@ -25,7 +25,6 @@ PROVIDERS = {
     "grindr": {"category": "sosial_media", "method": "email", "target": "support@grindr.com"},
     "meetup": {"category": "sosial_media", "method": "email", "target": "support@meetup.com"},
     "nextdoor": {"category": "sosial_media", "method": "email", "target": "support@nextdoor.com"},
-    "periscope": {"category": "sosial_media", "method": "email", "target": "support@periscope.tv"},
     "twitch": {"category": "sosial_media", "method": "email", "target": "support@twitch.tv"},
     "kik": {"category": "sosial_media", "method": "email", "target": "support@kik.com"},
     "imo": {"category": "sosial_media", "method": "email", "target": "support@imo.im"},
@@ -35,10 +34,9 @@ PROVIDERS = {
     "slack": {"category": "sosial_media", "method": "email", "target": "support@slack.com"},
     "microsoft_teams": {"category": "sosial_media", "method": "email", "target": "support@teams.microsoft.com"},
     "zoom": {"category": "sosial_media", "method": "email", "target": "support@zoom.us"},
-    "google_meet": {"category": "sosial_media", "method": "email", "target": "support@meet.google.com"},
-    "ciscowebex": {"category": "sosial_media", "method": "email", "target": "support@webex.com"},
+    "badoo": {"category": "sosial_media", "method": "email", "target": "support@badoo.com"},
 
-    # ========== E-COMMERCE INDONESIA (20+) ==========
+    # ===== E-COMMERCE INDONESIA (20+) =====
     "shopee": {"category": "ecommerce", "method": "email", "target": "report@shopee.co.id"},
     "tokopedia": {"category": "ecommerce", "method": "email", "target": "pengaduan@tokopedia.com"},
     "bukalapak": {"category": "ecommerce", "method": "email", "target": "pengaduan@bukalapak.com"},
@@ -57,9 +55,9 @@ PROVIDERS = {
     "alfagift": {"category": "ecommerce", "method": "email", "target": "cs@alfagift.com"},
     "sayurbox": {"category": "ecommerce", "method": "email", "target": "help@sayurbox.com"},
     "happyfresh": {"category": "ecommerce", "method": "email", "target": "support@happyfresh.com"},
-    "taniHub": {"category": "ecommerce", "method": "email", "target": "support@tanihub.com"},
+    "tanihub": {"category": "ecommerce", "method": "email", "target": "support@tanihub.com"},
 
-    # ========== E-COMMERCE INTERNASIONAL (30+) ==========
+    # ===== E-COMMERCE INTERNASIONAL (30+) =====
     "amazon": {"category": "ecommerce_intl", "method": "email", "target": "report-abuse@amazon.com"},
     "ebay": {"category": "ecommerce_intl", "method": "email", "target": "report@ebay.com"},
     "aliexpress": {"category": "ecommerce_intl", "method": "email", "target": "report@aliexpress.com"},
@@ -83,10 +81,10 @@ PROVIDERS = {
     "macys": {"category": "ecommerce_intl", "method": "email", "target": "support@macys.com"},
     "nordstrom": {"category": "ecommerce_intl", "method": "email", "target": "support@nordstrom.com"},
     "sephora": {"category": "ecommerce_intl", "method": "email", "target": "support@sephora.com"},
-    "ul Beauty": {"category": "ecommerce_intl", "method": "email", "target": "support@ulbeauty.com"},
+    "ulbeauty": {"category": "ecommerce_intl", "method": "email", "target": "support@ulbeauty.com"},
     "kohls": {"category": "ecommerce_intl", "method": "email", "target": "support@kohls.com"},
 
-    # ========== BANK INDONESIA (15+) ==========
+    # ===== BANK INDONESIA (15+) =====
     "bri": {"category": "bank", "method": "email", "target": "fraud@bri.co.id"},
     "bca": {"category": "bank", "method": "email", "target": "pengaduan@bca.co.id"},
     "mandiri": {"category": "bank", "method": "email", "target": "callcenter@bankmandiri.co.id"},
@@ -104,7 +102,7 @@ PROVIDERS = {
     "mega": {"category": "bank", "method": "email", "target": "customer@megabank.co.id"},
     "sinarmas": {"category": "bank", "method": "email", "target": "cs@sinarmasbank.com"},
 
-    # ========== BANK INTERNASIONAL (20+) ==========
+    # ===== BANK INTERNASIONAL (20+) =====
     "hsbc": {"category": "bank_intl", "method": "email", "target": "report.fraud@hsbc.com"},
     "citi": {"category": "bank_intl", "method": "email", "target": "fraudalert@citi.com"},
     "jpmorgan": {"category": "bank_intl", "method": "email", "target": "fraud@jpmorgan.com"},
@@ -121,11 +119,8 @@ PROVIDERS = {
     "capital_one": {"category": "bank_intl", "method": "email", "target": "fraud@capitalone.com"},
     "amex": {"category": "bank_intl", "method": "email", "target": "fraud@americanexpress.com"},
     "discover": {"category": "bank_intl", "method": "email", "target": "fraud@discover.com"},
-    "paypal": {"category": "bank_intl", "method": "email", "target": "fraud@paypal.com"},
-    "stripe": {"category": "bank_intl", "method": "email", "target": "abuse@stripe.com"},
-    "square": {"category": "bank_intl", "method": "email", "target": "fraud@square.com"},
 
-    # ========== PEMERINTAH INDONESIA (15+) ==========
+    # ===== PEMERINTAH INDONESIA (15+) =====
     "kominfo": {"category": "pemerintah", "method": "http", "url": "https://aduannomor.id/api/report"},
     "cekrekening": {"category": "pemerintah", "method": "form", "url": "https://cekrekening.id/"},
     "polri": {"category": "pemerintah", "method": "email", "target": "pengaduan@polri.go.id"},
@@ -141,7 +136,7 @@ PROVIDERS = {
     "bpk": {"category": "pemerintah", "method": "email", "target": "pengaduan@bpk.go.id"},
     "bpom": {"category": "pemerintah", "method": "email", "target": "pengaduan@bpom.go.id"},
 
-    # ========== PEMERINTAH INTERNASIONAL (20+) ==========
+    # ===== PEMERINTAH INTERNASIONAL (20+) =====
     "ic3_fbi": {"category": "pemerintah_intl", "method": "form", "url": "https://www.ic3.gov/Home/FileComplaint"},
     "europol": {"category": "pemerintah_intl", "method": "email", "target": "info@europol.europa.eu"},
     "interpol": {"category": "pemerintah_intl", "method": "email", "target": "complaints@interpol.int"},
@@ -156,9 +151,8 @@ PROVIDERS = {
     "australian_fed_police": {"category": "pemerintah_intl", "method": "email", "target": "report@afp.gov.au"},
     "canada_rcmp": {"category": "pemerintah_intl", "method": "email", "target": "report@rcmp-grc.ca"},
     "interpol_asia": {"category": "pemerintah_intl", "method": "email", "target": "asia@interpol.int"},
-    "un_odc_cyber": {"category": "pemerintah_intl", "method": "email", "target": "cyber@un.org"},
 
-    # ========== TEKNOLOGI & INTERNET (30+) ==========
+    # ===== TEKNOLOGI & INTERNET (30+) =====
     "google": {"category": "teknologi", "method": "email", "target": "report-abuse@google.com"},
     "apple": {"category": "teknologi", "method": "email", "target": "product-security@apple.com"},
     "microsoft": {"category": "teknologi", "method": "email", "target": "fraud@microsoft.com"},
@@ -175,10 +169,14 @@ PROVIDERS = {
     "ovh": {"category": "teknologi", "method": "email", "target": "abuse@ovh.com"},
     "godaddy": {"category": "teknologi", "method": "email", "target": "abuse@godaddy.com"},
     "namecheap": {"category": "teknologi", "method": "email", "target": "abuse@namecheap.com"},
-    "cloudflare_registrar": {"category": "teknologi", "method": "email", "target": "abuse@cloudflare.com"},
-    "google_domains": {"category": "teknologi", "method": "email", "target": "domains-abuse@google.com"},
+    "mozilla": {"category": "teknologi", "method": "email", "target": "abuse@mozilla.com"},
+    "opera": {"category": "teknologi", "method": "email", "target": "abuse@opera.com"},
+    "brave": {"category": "teknologi", "method": "email", "target": "abuse@brave.com"},
+    "tor": {"category": "teknologi", "method": "email", "target": "abuse@torproject.org"},
+    "proton": {"category": "teknologi", "method": "email", "target": "abuse@proton.me"},
+    "tutanota": {"category": "teknologi", "method": "email", "target": "abuse@tutanota.com"},
 
-    # ========== HOSTING & DOMAIN (20+) ==========
+    # ===== HOSTING & DOMAIN (20+) =====
     "hostgator": {"category": "hosting", "method": "email", "target": "abuse@hostgator.com"},
     "bluehost": {"category": "hosting", "method": "email", "target": "abuse@bluehost.com"},
     "siteground": {"category": "hosting", "method": "email", "target": "abuse@siteground.com"},
@@ -189,10 +187,13 @@ PROVIDERS = {
     "krystal": {"category": "hosting", "method": "email", "target": "abuse@krystal.co.uk"},
     "porkbun": {"category": "hosting", "method": "email", "target": "abuse@porkbun.com"},
     "namesilo": {"category": "hosting", "method": "email", "target": "abuse@namesilo.com"},
+    "epik": {"category": "hosting", "method": "email", "target": "abuse@epik.com"},
+    "name.com": {"category": "hosting", "method": "email", "target": "abuse@name.com"},
+    "network_solutions": {"category": "hosting", "method": "email", "target": "abuse@networksolutions.com"},
+    "gandi": {"category": "hosting", "method": "email", "target": "abuse@gandi.net"},
 
-    # ========== FORUM & KOMUNITAS (15+) ==========
+    # ===== FORUM & KOMUNITAS (15+) =====
     "kaskus": {"category": "forum", "method": "email", "target": "report@kaskus.co.id"},
-    "reddit": {"category": "forum", "method": "email", "target": "contact@reddit.com"},
     "4chan": {"category": "forum", "method": "email", "target": "abuse@4chan.org"},
     "8kun": {"category": "forum", "method": "email", "target": "abuse@8kun.net"},
     "quora": {"category": "forum", "method": "email", "target": "abuse@quora.com"},
@@ -201,7 +202,7 @@ PROVIDERS = {
     "gitlab": {"category": "forum", "method": "email", "target": "abuse@gitlab.com"},
     "bitbucket": {"category": "forum", "method": "email", "target": "abuse@bitbucket.org"},
 
-    # ========== MEDIA INDONESIA (15+) ==========
+    # ===== MEDIA INDONESIA (15+) =====
     "detik": {"category": "media", "method": "email", "target": "redaksi@detik.com"},
     "kompas": {"category": "media", "method": "email", "target": "redaksi@kompas.com"},
     "tribun": {"category": "media", "method": "email", "target": "redaksi@tribunnews.com"},
@@ -217,7 +218,7 @@ PROVIDERS = {
     "kumparan": {"category": "media", "method": "email", "target": "redaksi@kumparan.com"},
     "medcom": {"category": "media", "method": "email", "target": "redaksi@medcom.id"},
 
-    # ========== MEDIA INTERNASIONAL (15+) ==========
+    # ===== MEDIA INTERNASIONAL (15+) =====
     "bbc": {"category": "media_intl", "method": "email", "target": "contact@bbc.com"},
     "cnn": {"category": "media_intl", "method": "email", "target": "tips@cnn.com"},
     "nytimes": {"category": "media_intl", "method": "email", "target": "privacy@nytimes.com"},
@@ -231,18 +232,7 @@ PROVIDERS = {
     "nbc_news": {"category": "media_intl", "method": "email", "target": "contact@nbc.com"},
     "fox_news": {"category": "media_intl", "method": "email", "target": "contact@foxnews.com"},
 
-    # ========== DOMAIN REGISTRAR (10+) ==========
-    "namecheap": {"category": "domain", "method": "email", "target": "abuse@namecheap.com"},
-    "godaddy": {"category": "domain", "method": "email", "target": "abuse@godaddy.com"},
-    "google_domains": {"category": "domain", "method": "email", "target": "domains-abuse@google.com"},
-    "cloudflare_registrar": {"category": "domain", "method": "email", "target": "abuse@cloudflare.com"},
-    "porkbun": {"category": "domain", "method": "email", "target": "abuse@porkbun.com"},
-    "namesilo": {"category": "domain", "method": "email", "target": "abuse@namesilo.com"},
-    "epik": {"category": "domain", "method": "email", "target": "abuse@epik.com"},
-    "name.com": {"category": "domain", "method": "email", "target": "abuse@name.com"},
-    "network_solutions": {"category": "domain", "method": "email", "target": "abuse@networksolutions.com"},
-    "gandi": {"category": "domain", "method": "email", "target": "abuse@gandi.net"},
-        # ========== FINTECH & E-WALLET (25+) ==========
+    # ===== FINTECH & E-WALLET (20+) =====
     "gopay": {"category": "fintech", "method": "email", "target": "cs@gopay.co.id"},
     "ovo": {"category": "fintech", "method": "email", "target": "support@ovo.id"},
     "dana": {"category": "fintech", "method": "email", "target": "cs@dana.id"},
@@ -263,8 +253,7 @@ PROVIDERS = {
     "midtrans": {"category": "fintech", "method": "email", "target": "support@midtrans.com"},
     "duitku": {"category": "fintech", "method": "email", "target": "cs@duitku.com"},
     "ipaymu": {"category": "fintech", "method": "email", "target": "support@ipaymu.com"},
-
-    # ========== TRAVEL & TRANSPORTASI (20+) ==========
+    # ===== TRAVEL & TRANSPORTASI (20+) =====
     "tiket": {"category": "travel", "method": "email", "target": "cs@tiket.com"},
     "traveloka": {"category": "travel", "method": "email", "target": "cs@traveloka.com"},
     "agoda": {"category": "travel", "method": "email", "target": "support@agoda.com"},
@@ -275,7 +264,7 @@ PROVIDERS = {
     "gojek": {"category": "travel", "method": "email", "target": "support@gojek.com"},
     "grab": {"category": "travel", "method": "email", "target": "support@grab.com"},
     "maxim": {"category": "travel", "method": "email", "target": "support@maxim.id"},
-    "inDrive": {"category": "travel", "method": "email", "target": "support@indrive.com"},
+    "indrive": {"category": "travel", "method": "email", "target": "support@indrive.com"},
     "bluebird": {"category": "travel", "method": "email", "target": "cs@bluebird.co.id"},
     "transjakarta": {"category": "travel", "method": "email", "target": "cs@transjakarta.co.id"},
     "kci": {"category": "travel", "method": "email", "target": "cs@kci.co.id"},
@@ -286,7 +275,7 @@ PROVIDERS = {
     "sriwijaya": {"category": "travel", "method": "email", "target": "cs@sriwijayaair.co.id"},
     "pelni": {"category": "travel", "method": "email", "target": "cs@pelni.co.id"},
 
-    # ========== GAME & PLATFORM GAMING (25+) ==========
+    # ===== GAME & PLATFORM GAMING (25+) =====
     "steam": {"category": "game", "method": "email", "target": "fraud@steam.com"},
     "epic": {"category": "game", "method": "email", "target": "support@epicgames.com"},
     "riot": {"category": "game", "method": "email", "target": "support@riotgames.com"},
@@ -309,7 +298,7 @@ PROVIDERS = {
     "sega": {"category": "game", "method": "email", "target": "support@sega.com"},
     "square_enix": {"category": "game", "method": "email", "target": "support@square-enix.com"},
 
-    # ========== STREAMING & HIBURAN (25+) ==========
+    # ===== STREAMING & HIBURAN (25+) =====
     "netflix": {"category": "streaming", "method": "email", "target": "support@netflix.com"},
     "spotify": {"category": "streaming", "method": "email", "target": "support@spotify.com"},
     "youtube_music": {"category": "streaming", "method": "email", "target": "support@youtube.com"},
@@ -325,15 +314,14 @@ PROVIDERS = {
     "iflix": {"category": "streaming", "method": "email", "target": "support@iflix.com"},
     "viki": {"category": "streaming", "method": "email", "target": "support@viki.com"},
     "we_tv": {"category": "streaming", "method": "email", "target": "support@wetv.com"},
-    "iqi_yi": {"category": "streaming", "method": "email", "target": "support@iqiyi.com"},
+    "iqiyi": {"category": "streaming", "method": "email", "target": "support@iqiyi.com"},
     "bilibili": {"category": "streaming", "method": "email", "target": "support@bilibili.com"},
-    "twitch": {"category": "streaming", "method": "email", "target": "support@twitch.tv"},
     "kick": {"category": "streaming", "method": "email", "target": "support@kick.com"},
     "roku": {"category": "streaming", "method": "email", "target": "support@roku.com"},
     "crunchyroll": {"category": "streaming", "method": "email", "target": "support@crunchyroll.com"},
     "funimation": {"category": "streaming", "method": "email", "target": "support@funimation.com"},
 
-    # ========== PENDIDIKAN & KURSUS (20+) ==========
+    # ===== PENDIDIKAN & KURSUS (20+) =====
     "coursera": {"category": "pendidikan", "method": "email", "target": "support@coursera.org"},
     "udemy": {"category": "pendidikan", "method": "email", "target": "support@udemy.com"},
     "edx": {"category": "pendidikan", "method": "email", "target": "support@edx.org"},
@@ -344,15 +332,13 @@ PROVIDERS = {
     "pahamify": {"category": "pendidikan", "method": "email", "target": "support@pahamify.com"},
     "kelas": {"category": "pendidikan", "method": "email", "target": "cs@kelas.com"},
     "quipper": {"category": "pendidikan", "method": "email", "target": "support@quipper.com"},
-    "scholarship": {"category": "pendidikan", "method": "email", "target": "support@scholarship.com"},
-    "go_course": {"category": "pendidikan", "method": "email", "target": "support@gocourse.id"},
     "dicoding": {"category": "pendidikan", "method": "email", "target": "support@dicoding.com"},
-    "code_academy": {"category": "pendidikan", "method": "email", "target": "support@codecademy.com"},
+    "codecademy": {"category": "pendidikan", "method": "email", "target": "support@codecademy.com"},
     "freecodecamp": {"category": "pendidikan", "method": "email", "target": "support@freecodecamp.org"},
     "khan_academy": {"category": "pendidikan", "method": "email", "target": "support@khanacademy.org"},
     "progate": {"category": "pendidikan", "method": "email", "target": "support@progate.com"},
 
-    # ========== JASA & MARKETPLACE JASA (20+) ==========
+    # ===== JASA & MARKETPLACE JASA (20+) =====
     "fiverr": {"category": "jasa", "method": "email", "target": "support@fiverr.com"},
     "upwork": {"category": "jasa", "method": "email", "target": "support@upwork.com"},
     "freelancer": {"category": "jasa", "method": "email", "target": "support@freelancer.com"},
@@ -360,13 +346,13 @@ PROVIDERS = {
     "projects": {"category": "jasa", "method": "email", "target": "support@projects.co.id"},
     "taskrabbit": {"category": "jasa", "method": "email", "target": "support@taskrabbit.com"},
     "thumbtack": {"category": "jasa", "method": "email", "target": "support@thumbtack.com"},
-    "care.com": {"category": "jasa", "method": "email", "target": "support@care.com"},
+    "care": {"category": "jasa", "method": "email", "target": "support@care.com"},
     "guru": {"category": "jasa", "method": "email", "target": "support@guru.com"},
     "peopleperhour": {"category": "jasa", "method": "email", "target": "support@peopleperhour.com"},
     "toptal": {"category": "jasa", "method": "email", "target": "support@toptal.com"},
     "truelancer": {"category": "jasa", "method": "email", "target": "support@truelancer.com"},
 
-    # ========== CRYPTO & EXCHANGE (15+) ==========
+    # ===== CRYPTO & EXCHANGE (15+) =====
     "binance": {"category": "crypto", "method": "email", "target": "fraud@binance.com"},
     "coinbase": {"category": "crypto", "method": "email", "target": "support@coinbase.com"},
     "indodax": {"category": "crypto", "method": "email", "target": "support@indodax.com"},
@@ -383,7 +369,7 @@ PROVIDERS = {
     "bitstamp": {"category": "crypto", "method": "email", "target": "support@bitstamp.com"},
     "crypto_com": {"category": "crypto", "method": "email", "target": "support@crypto.com"},
 
-    # ========== MARKETPLACE ALTERNATIF (15+) ==========
+    # ===== MARKETPLACE ALTERNATIF (15+) =====
     "carousell": {"category": "marketplace", "method": "email", "target": "support@carousell.com"},
     "olx": {"category": "marketplace", "method": "email", "target": "support@olx.co.id"},
     "mudah": {"category": "marketplace", "method": "email", "target": "support@mudah.my"},
@@ -400,27 +386,8 @@ PROVIDERS = {
     "poshmark": {"category": "marketplace", "method": "email", "target": "support@poshmark.com"},
     "depop": {"category": "marketplace", "method": "email", "target": "support@depop.com"},
 
-    # ========== APLIKASI KENCAN & SOSIAL LAIN (10+) ==========
-    "badoo": {"category": "sosial_media", "method": "email", "target": "support@badoo.com"},
-    "feeld": {"category": "sosial_media", "method": "email", "target": "support@feeld.co"},
-    "her": {"category": "sosial_media", "method": "email", "target": "support@her.com"},
-    "lex": {"category": "sosial_media", "method": "email", "target": "support@lex.lgbt"},
-    "doublelist": {"category": "sosial_media", "method": "email", "target": "support@doublelist.com"},
-
-    # ========== DUKUNGAN TEKNIS (10+) ==========
-    "mozilla": {"category": "teknologi", "method": "email", "target": "abuse@mozilla.com"},
-    "opera": {"category": "teknologi", "method": "email", "target": "abuse@opera.com"},
-    "brave": {"category": "teknologi", "method": "email", "target": "abuse@brave.com"},
-    "vivaldi": {"category": "teknologi", "method": "email", "target": "abuse@vivaldi.com"},
-    "tor": {"category": "teknologi", "method": "email", "target": "abuse@torproject.org"},
-    "proton": {"category": "teknologi", "method": "email", "target": "abuse@proton.me"},
-    "tutanota": {"category": "teknologi", "method": "email", "target": "abuse@tutanota.com"},
-    "mailbox": {"category": "teknologi", "method": "email", "target": "abuse@mailbox.org"},
-    "startmail": {"category": "teknologi", "method": "email", "target": "abuse@startmail.com"},
-    "posteo": {"category": "teknologi", "method": "email", "target": "abuse@posteo.de"},
-
-    # ========== ASURANSI & INVESTASI (10+) ==========
-    "bni_life": {"category": "keuangan", "method": "email", "target": "cs@bnilife.co.id"},
+    # ===== KEUANGAN & ASURANSI (15+) =====
+    "bnilife": {"category": "keuangan", "method": "email", "target": "cs@bnilife.co.id"},
     "aia": {"category": "keuangan", "method": "email", "target": "support@aia.com"},
     "prudential": {"category": "keuangan", "method": "email", "target": "support@prudential.com"},
     "allianz": {"category": "keuangan", "method": "email", "target": "support@allianz.com"},
@@ -429,20 +396,251 @@ PROVIDERS = {
     "axa": {"category": "keuangan", "method": "email", "target": "support@axa.com"},
     "saham": {"category": "keuangan", "method": "email", "target": "support@saham.com"},
     "aplikasi": {"category": "keuangan", "method": "email", "target": "support@aplikasi.com"},
-    "fund": {"category": "keuangan", "method": "email", "target": "support@fund.com"},
+    "fund": {"category": "keuangan", "method": "email", "target": "support@fund.com"}
+# ===== BANK DAERAH INDONESIA (15+) =====
+"bjb": {"category": "bank", "method": "email", "target": "cs@bankbjb.co.id"},
+"bpd_jatim": {"category": "bank", "method": "email", "target": "callcenter@bankjatim.co.id"},
+"bpd_jateng": {"category": "bank", "method": "email", "target": "cs@bankjateng.co.id"},
+"bpd_sumbar": {"category": "bank", "method": "email", "target": "cs@banksumbar.com"},
+"bpd_sulsel": {"category": "bank", "method": "email", "target": "callcenter@banksulselbar.co.id"},
+"bpd_ntb": {"category": "bank", "method": "email", "target": "cs@bankntb.co.id"},
+"bpd_aceh": {"category": "bank", "method": "email", "target": "cs@bankaceh.co.id"},
+"bpd_riau": {"category": "bank", "method": "email", "target": "cs@bankriau.co.id"},
+"bpd_kalsel": {"category": "bank", "method": "email", "target": "cs@bankkalsel.co.id"},
+"bpd_kaltim": {"category": "bank", "method": "email", "target": "cs@bankkaltim.co.id"},
+"bpd_balikpapan": {"category": "bank", "method": "email", "target": "cs@bankbalikpapan.co.id"},
+"bpd_bali": {"category": "bank", "method": "email", "target": "cs@bankbali.co.id"},
+
+# ===== FINTECH & E-WALLET TAMBAHAN (15+) =====
+"qriss": {"category": "fintech", "method": "email", "target": "support@qriss.com"},
+"brizzi": {"category": "fintech", "method": "email", "target": "cs@brizzi.co.id"},
+"paytren": {"category": "fintech", "method": "email", "target": "support@paytren.com"},
+"m-banking_bni": {"category": "fintech", "method": "email", "target": "cs@bni.co.id"},
+"m-banking_bri": {"category": "fintech", "method": "email", "target": "cs@bri.co.id"},
+"sakuku": {"category": "fintech", "method": "email", "target": "support@sakuku.com"},
+"boombay": {"category": "fintech", "method": "email", "target": "support@boombay.com"},
+"halodoc_pay": {"category": "fintech", "method": "email", "target": "cs@halodoc.com"},
+"klikbca": {"category": "fintech", "method": "email", "target": "help@klikbca.com"},
+"mybca": {"category": "fintech", "method": "email", "target": "help@bca.co.id"},
+
+# ===== TRAVEL & TRANSPORTASI TAMBAHAN (15+) =====
+"redbus": {"category": "travel", "method": "email", "target": "support@redbus.com"},
+"busonline": {"category": "travel", "method": "email", "target": "cs@busonline.id"},
+"pahala_kencana": {"category": "travel", "method": "email", "target": "cs@pahala.com"},
+"damri": {"category": "travel", "method": "email", "target": "cs@damri.co.id"},
+"bali_air": {"category": "travel", "method": "email", "target": "cs@bali-air.com"},
+"scoot": {"category": "travel", "method": "email", "target": "support@scoot.com"},
+"air_asia": {"category": "travel", "method": "email", "target": "support@airasia.com"},
+"jetstar": {"category": "travel", "method": "email", "target": "support@jetstar.com"},
+"qantas": {"category": "travel", "method": "email", "target": "support@qantas.com"},
+"virgin_atlantic": {"category": "travel", "method": "email", "target": "support@virginatlantic.com"},
+"singapore_air": {"category": "travel", "method": "email", "target": "support@singaporeair.com"},
+"malaysia_air": {"category": "travel", "method": "email", "target": "support@malaysiaairlines.com"},
+"cathay_pacific": {"category": "travel", "method": "email", "target": "support@cathaypacific.com"},
+"emirates": {"category": "travel", "method": "email", "target": "support@emirates.com"},
+"etihad": {"category": "travel", "method": "email", "target": "support@etihad.com"},
+
+# ===== MEDIA INDONESIA TAMBAHAN (10+) =====
+"sindonews": {"category": "media", "method": "email", "target": "redaksi@sindonews.com"},
+"poskota": {"category": "media", "method": "email", "target": "redaksi@poskota.co.id"},
+"waspada": {"category": "media", "method": "email", "target": "redaksi@waspada.co.id"},
+"harian_jogja": {"category": "media", "method": "email", "target": "redaksi@harianjogja.com"},
+"radar_bandung": {"category": "media", "method": "email", "target": "redaksi@radar-bandung.co.id"},
+"radar_surabaya": {"category": "media", "method": "email", "target": "redaksi@radar-surabaya.co.id"},
+"berita_satu": {"category": "media", "method": "email", "target": "redaksi@beritasatu.com"},
+"intisari": {"category": "media", "method": "email", "target": "redaksi@intisari.co.id"},
+"bobo": {"category": "media", "method": "email", "target": "redaksi@bobo.co.id"},
+
+# ===== LAYANAN PEMERINTAH DAERAH (15+) =====
+"pemprov_dki": {"category": "pemerintah", "method": "email", "target": "pengaduan@jakarta.go.id"},
+"pemprov_jabar": {"category": "pemerintah", "method": "email", "target": "pengaduan@jabar.go.id"},
+"pemprov_jatim": {"category": "pemerintah", "method": "email", "target": "pengaduan@jatim.go.id"},
+"pemprov_jateng": {"category": "pemerintah", "method": "email", "target": "pengaduan@jateng.go.id"},
+"pemprov_bali": {"category": "pemerintah", "method": "email", "target": "pengaduan@bali.go.id"},
+"pemprov_sumut": {"category": "pemerintah", "method": "email", "target": "pengaduan@sumut.go.id"},
+"pemprov_sumbar": {"category": "pemerintah", "method": "email", "target": "pengaduan@sumbar.go.id"},
+"pemprov_riau": {"category": "pemerintah", "method": "email", "target": "pengaduan@riau.go.id"},
+"pemprov_kalsel": {"category": "pemerintah", "method": "email", "target": "pengaduan@kalsel.go.id"},
+"pemprov_kaltim": {"category": "pemerintah", "method": "email", "target": "pengaduan@kaltim.go.id"},
+"pemprov_sulsel": {"category": "pemerintah", "method": "email", "target": "pengaduan@sulsel.go.id"},
+"pemprov_papua": {"category": "pemerintah", "method": "email", "target": "pengaduan@papua.go.id"},
+"pemprov_ntt": {"category": "pemerintah", "method": "email", "target": "pengaduan@ntt.go.id"},
+"pemprov_ntb": {"category": "pemerintah", "method": "email", "target": "pengaduan@ntb.go.id"},
+"pemprov_babel": {"category": "pemerintah", "method": "email", "target": "pengaduan@babel.go.id"},
+# ===== GAME & PLATFORM GAMING TAMBAHAN (15+) =====
+"mobile_legends": {"category": "game", "method": "email", "target": "support@moonton.com"},
+"free_fire": {"category": "game", "method": "email", "target": "support@freefire.com"},
+"pubg": {"category": "game", "method": "email", "target": "support@pubg.com"},
+"call_of_duty": {"category": "game", "method": "email", "target": "support@callofduty.com"},
+"valorant": {"category": "game", "method": "email", "target": "support@valorant.com"},
+"dota2": {"category": "game", "method": "email", "target": "support@dota2.com"},
+"counter_strike": {"category": "game", "method": "email", "target": "support@counterstrike.com"},
+"warcraft": {"category": "game", "method": "email", "target": "support@warcraft.com"},
+"diablo": {"category": "game", "method": "email", "target": "support@diablo.com"},
+"overwatch": {"category": "game", "method": "email", "target": "support@overwatch.com"},
+"apex_legends": {"category": "game", "method": "email", "target": "support@apexlegends.com"},
+"fortnite": {"category": "game", "method": "email", "target": "support@fortnite.com"},
+"genshin_impact": {"category": "game", "method": "email", "target": "support@genshin.com"},
+"honkai_star": {"category": "game", "method": "email", "target": "support@honkaistar.com"},
+"zelda": {"category": "game", "method": "email", "target": "support@zelda.com"},
+
+# ===== STREAMING & HIBURAN TAMBAHAN (15+) =====
+"iflix": {"category": "streaming", "method": "email", "target": "support@iflix.com"},
+"voot": {"category": "streaming", "method": "email", "target": "support@voot.com"},
+"hotstar": {"category": "streaming", "method": "email", "target": "support@hotstar.com"},
+"mubi": {"category": "streaming", "method": "email", "target": "support@mubi.com"},
+"shudder": {"category": "streaming", "method": "email", "target": "support@shudder.com"},
+"britbox": {"category": "streaming", "method": "email", "target": "support@britbox.com"},
+"acorn_tv": {"category": "streaming", "method": "email", "target": "support@acorn.tv"},
+"kanopy": {"category": "streaming", "method": "email", "target": "support@kanopy.com"},
+"hoopla": {"category": "streaming", "method": "email", "target": "support@hoopla.com"},
+"tubi": {"category": "streaming", "method": "email", "target": "support@tubi.com"},
+"plex": {"category": "streaming", "method": "email", "target": "support@plex.com"},
+"vudu": {"category": "streaming", "method": "email", "target": "support@vudu.com"},
+
+# ===== PENDIDIKAN & KURSUS TAMBAHAN (10+) =====
+"edmodo": {"category": "pendidikan", "method": "email", "target": "support@edmodo.com"},
+"classroom": {"category": "pendidikan", "method": "email", "target": "support@classroom.com"},
+"moodle": {"category": "pendidikan", "method": "email", "target": "support@moodle.com"},
+"blackboard": {"category": "pendidikan", "method": "email", "target": "support@blackboard.com"},
+"canvas": {"category": "pendidikan", "method": "email", "target": "support@canvas.com"},
+"scholar": {"category": "pendidikan", "method": "email", "target": "support@scholar.com"},
+"researchgate": {"category": "pendidikan", "method": "email", "target": "support@researchgate.com"},
+"academia": {"category": "pendidikan", "method": "email", "target": "support@academia.com"},
+"zotero": {"category": "pendidikan", "method": "email", "target": "support@zotero.com"},
+"mendeley": {"category": "pendidikan", "method": "email", "target": "support@mendeley.com"},
+
+# ===== JASA & FREELANCE TAMBAHAN (15+) =====
+"kontraktor": {"category": "jasa", "method": "email", "target": "support@kontraktor.com"},
+"service_advisor": {"category": "jasa", "method": "email", "target": "support@serviceadvisor.com"},
+"porch": {"category": "jasa", "method": "email", "target": "support@porch.com"},
+"angieslist": {"category": "jasa", "method": "email", "target": "support@angieslist.com"},
+"homeadvisor": {"category": "jasa", "method": "email", "target": "support@homeadvisor.com"},
+"bark": {"category": "jasa", "method": "email", "target": "support@bark.com"},
+"jasa123": {"category": "jasa", "method": "email", "target": "support@jasa123.com"},
+"service_market": {"category": "jasa", "method": "email", "target": "support@servicemarket.com"},
+"jasa_online": {"category": "jasa", "method": "email", "target": "support@jasaonline.com"},
+"kuli_bangunan": {"category": "jasa", "method": "email", "target": "support@kulibangunan.com"},
+"tukang_online": {"category": "jasa", "method": "email", "target": "support@tukangonline.com"},
+
+# ===== KESEHATAN & MEDIS (15+) =====
+"halodoc": {"category": "kesehatan", "method": "email", "target": "cs@halodoc.com"},
+"klikdokter": {"category": "kesehatan", "method": "email", "target": "cs@klikdokter.com"},
+"alodokter": {"category": "kesehatan", "method": "email", "target": "cs@alodokter.com"},
+"sehatq": {"category": "kesehatan", "method": "email", "target": "cs@sehatq.com"},
+"gooddoctor": {"category": "kesehatan", "method": "email", "target": "support@gooddoctor.com"},
+"medscape": {"category": "kesehatan", "method": "email", "target": "support@medscape.com"},
+"webmd": {"category": "kesehatan", "method": "email", "target": "support@webmd.com"},
+"healthline": {"category": "kesehatan", "method": "email", "target": "support@healthline.com"},
+"mayo_clinic": {"category": "kesehatan", "method": "email", "target": "support@mayoclinic.com"},
+"cleveland_clinic": {"category": "kesehatan", "method": "email", "target": "support@clevelandclinic.com"},
+"nih": {"category": "kesehatan", "method": "email", "target": "support@nih.gov"},
+"who": {"category": "kesehatan", "method": "email", "target": "info@who.int"},
+"unicef": {"category": "kesehatan", "method": "email", "target": "info@unicef.org"},
+"red_cross": {"category": "kesehatan", "method": "email", "target": "info@redcross.org"},
+
+# ===== MARKETPLACE ALTERNATIF TAMBAHAN (15+) =====
+"letgo": {"category": "marketplace", "method": "email", "target": "support@letgo.com"},
+"offerup": {"category": "marketplace", "method": "email", "target": "support@offerup.com"},
+"5miles": {"category": "marketplace", "method": "email", "target": "support@5miles.com"},
+"wallapop": {"category": "marketplace", "method": "email", "target": "support@wallapop.com"},
+"shpock": {"category": "marketplace", "method": "email", "target": "support@shpock.com"},
+"vinted": {"category": "marketplace", "method": "email", "target": "support@vinted.com"},
+"depop": {"category": "marketplace", "method": "email", "target": "support@depop.com"},
+"discogs": {"category": "marketplace", "method": "email", "target": "support@discogs.com"},
+"reverb": {"category": "marketplace", "method": "email", "target": "support@reverb.com"},
+"etsy": {"category": "marketplace", "method": "email", "target": "support@etsy.com"},
+"ebid": {"category": "marketplace", "method": "email", "target": "support@ebid.net"},
+"catawiki": {"category": "marketplace", "method": "email", "target": "support@catawiki.com"},
+"bidorbuy": {"category": "marketplace", "method": "email", "target": "support@bidorbuy.co.za"},
+"gumtree": {"category": "marketplace", "method": "email", "target": "support@gumtree.com"},
+"bonanza": {"category": "marketplace", "method": "email", "target": "support@bonanza.com"},
+    # ===== CRYPTO & EXCHANGE TAMBAHAN (15+) =====
+    "blockchain": {"category": "crypto", "method": "email", "target": "support@blockchain.com"},
+    "trust_wallet": {"category": "crypto", "method": "email", "target": "support@trustwallet.com"},
+    "metamask": {"category": "crypto", "method": "email", "target": "support@metamask.io"},
+    "binance_us": {"category": "crypto", "method": "email", "target": "support@binance.us"},
+    "coinbase_pro": {"category": "crypto", "method": "email", "target": "support@coinbasepro.com"},
+    "bitmart": {"category": "crypto", "method": "email", "target": "support@bitmart.com"},
+    "gate_io": {"category": "crypto", "method": "email", "target": "support@gate.io"},
+    "mexc": {"category": "crypto", "method": "email", "target": "support@mexc.com"},
+    "pionex": {"category": "crypto", "method": "email", "target": "support@pionex.com"},
+    "kucoin": {"category": "crypto", "method": "email", "target": "support@kucoin.com"},
+    "hotbit": {"category": "crypto", "method": "email", "target": "support@hotbit.com"},
+    "zb": {"category": "crypto", "method": "email", "target": "support@zb.com"},
+    "hitbtc": {"category": "crypto", "method": "email", "target": "support@hitbtc.com"},
+    "bitforex": {"category": "crypto", "method": "email", "target": "support@bitforex.com"},
+    "probit": {"category": "crypto", "method": "email", "target": "support@probit.com"},
+
+    # ===== KEUANGAN & INVESTASI TAMBAHAN (15+) =====
+    "ajaib": {"category": "keuangan", "method": "email", "target": "cs@ajaib.co.id"},
+    "bibit": {"category": "keuangan", "method": "email", "target": "cs@bibit.co.id"},
+    "bareksa": {"category": "keuangan", "method": "email", "target": "cs@bareksa.com"},
+    "tanamduit": {"category": "keuangan", "method": "email", "target": "cs@tanamduit.com"},
+    "fundrise": {"category": "keuangan", "method": "email", "target": "support@fundrise.com"},
+    "robinhood": {"category": "keuangan", "method": "email", "target": "support@robinhood.com"},
+    "e_toro": {"category": "keuangan", "method": "email", "target": "support@etoro.com"},
+    "webull": {"category": "keuangan", "method": "email", "target": "support@webull.com"},
+    "m1_finance": {"category": "keuangan", "method": "email", "target": "support@m1finance.com"},
+    "betterment": {"category": "keuangan", "method": "email", "target": "support@betterment.com"},
+    "wealthfront": {"category": "keuangan", "method": "email", "target": "support@wealthfront.com"},
+    "acorns": {"category": "keuangan", "method": "email", "target": "support@acorns.com"},
+    "stash": {"category": "keuangan", "method": "email", "target": "support@stash.com"},
+
+    # ===== LAYANAN INTERNASIONAL LAINNYA (15+) =====
+    "un_human_rights": {"category": "internasional", "method": "email", "target": "info@ohchr.org"},
+    "amnesty": {"category": "internasional", "method": "email", "target": "info@amnesty.org"},
+    "hrw": {"category": "internasional", "method": "email", "target": "info@hrw.org"},
+    "icrc": {"category": "internasional", "method": "email", "target": "info@icrc.org"},
+    "wfp": {"category": "internasional", "method": "email", "target": "info@wfp.org"},
+    "unhcr": {"category": "internasional", "method": "email", "target": "info@unhcr.org"},
+    "ilo": {"category": "internasional", "method": "email", "target": "info@ilo.org"},
+    "unesco": {"category": "internasional", "method": "email", "target": "info@unesco.org"},
+    "undp": {"category": "internasional", "method": "email", "target": "info@undp.org"},
+    "unep": {"category": "internasional", "method": "email", "target": "info@unep.org"},
+    "united_nations": {"category": "internasional", "method": "email", "target": "info@un.org"},
+    "nato": {"category": "internasional", "method": "email", "target": "info@nato.int"},
+    "oecd": {"category": "internasional", "method": "email", "target": "info@oecd.org"},
+
+    # ===== DOMAIN REGISTRAR BARU (10+) =====
+    "cloudflare_registrar": {"category": "domain", "method": "email", "target": "abuse@cloudflare.com"},
+    "google_domains": {"category": "domain", "method": "email", "target": "domains-abuse@google.com"},
+    "namebright": {"category": "domain", "method": "email", "target": "abuse@namebright.com"},
+    "uniregistry": {"category": "domain", "method": "email", "target": "abuse@uniregistry.com"},
+    "internetbs": {"category": "domain", "method": "email", "target": "abuse@internetbs.net"},
+    "domain.com": {"category": "domain", "method": "email", "target": "abuse@domain.com"},
+    "dynadot": {"category": "domain", "method": "email", "target": "abuse@dynadot.com"},
+    "hover": {"category": "domain", "method": "email", "target": "abuse@hover.com"},
+    "iwantmyname": {"category": "domain", "method": "email", "target": "abuse@iwantmyname.com"},
+    "one": {"category": "domain", "method": "email", "target": "abuse@one.com"},
+
+    # ===== TEKNOLOGI CLOUD TAMBAHAN (15+) =====
+    "google_cloud": {"category": "teknologi", "method": "email", "target": "abuse@cloud.google.com"},
+    "azure": {"category": "teknologi", "method": "email", "target": "abuse@microsoft.com"},
+    "oracle_cloud": {"category": "teknologi", "method": "email", "target": "abuse@oracle.com"},
+    "ibm_cloud": {"category": "teknologi", "method": "email", "target": "abuse@ibm.com"},
+    "alibaba_cloud": {"category": "teknologi", "method": "email", "target": "abuse@alibabacloud.com"},
+    "tencent_cloud": {"category": "teknologi", "method": "email", "target": "abuse@tencentcloud.com"},
+    "huawei_cloud": {"category": "teknologi", "method": "email", "target": "abuse@huaweicloud.com"},
+    "aws_govcloud": {"category": "teknologi", "method": "email", "target": "abuse@amazonaws.com"},
+    "rackspace": {"category": "teknologi", "method": "email", "target": "abuse@rackspace.com"},
+    "go_cloud": {"category": "teknologi", "method": "email", "target": "abuse@gocloud.com"},
+    "scaleway": {"category": "teknologi", "method": "email", "target": "abuse@scaleway.com"},
+    "hetzner": {"category": "teknologi", "method": "email", "target": "abuse@hetzner.com"},
+    "contabo": {"category": "teknologi", "method": "email", "target": "abuse@contabo.com"},
+    "vps": {"category": "teknologi", "method": "email", "target": "abuse@vps.com"},
+    "hostwinds": {"category": "teknologi", "method": "email", "target": "abuse@hostwinds.com"},
 }
 
-# ===== Fungsi tambahan untuk main.py =====
+# ===== FUNGSI UNTUK main.py =====
 
 def get_categories():
-    """Mengembalikan daftar kategori unik dari semua provider"""
     categories = set()
     for info in PROVIDERS.values():
         categories.add(info.get("category", "umum"))
     return sorted(list(categories))
 
 def get_providers_by_category(category):
-    """Mengembalikan dictionary provider yang termasuk dalam kategori tertentu"""
     result = {}
     for name, info in PROVIDERS.items():
         if info.get("category") == category:
