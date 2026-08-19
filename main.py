@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# main.py – SCRIPETEREN TOOLS REPORT – Premium Edition
+# main.py – SCRIPETEREN TOOLS REPORT – Premium Edition (Fix)
 
 import json
 import sys
@@ -16,8 +16,6 @@ from rich.panel import Panel
 from rich.prompt import Prompt, IntPrompt, Confirm
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich import box
-from rich.layout import Layout
-from rich.live import Live
 from rich.text import Text
 
 from providers import PROVIDERS, get_categories, get_providers_by_category
@@ -41,13 +39,6 @@ SPLASH_ART = """
  ╚════██║██║     ██╔══██╗██║██╔═══╝ ██╔══╝     ██║   ██╔══╝  ██╔══██╗██╔══╝  ██║╚██╗██║
  ███████║╚██████╗██║  ██║██║██║     ███████╗   ██║   ███████╗██║  ██║███████╗██║ ╚████║
  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝     ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
-                                                                                      
-      ████████╗ ██████╗  ██████╗ ██╗     ███████╗    ██████╗ ███████╗██████╗  ██████╗ ██████╗ ████████╗
-      ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔════╝    ██╔══██╗██╔════╝██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝
-         ██║   ██║   ██║██║   ██║██║     █████╗      ██████╔╝█████╗  ██████╔╝██║   ██║██████╔╝   ██║   
-         ██║   ██║   ██║██║   ██║██║     ██╔══╝      ██╔══██╗██╔══╝  ██╔══██╗██║   ██║██╔══██╗   ██║   
-         ██║   ╚██████╔╝╚██████╔╝███████╗███████╗    ██║  ██║███████╗██║  ██║╚██████╔╝██║  ██║   ██║   
-         ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
 """
 
 MOTIVATIONAL_MESSAGES = [
@@ -66,22 +57,18 @@ MOTIVATIONAL_MESSAGES = [
 GITHUB_SUPPORT = "🔗 Support GitHub: https://github.com/scripeteren"
 
 def welcome_screen():
-    """Tampilan pembuka premium dengan animasi, loading, dan Enter prompt"""
     console.clear()
-    
-    # Banner splash art
     console.print(Text(SPLASH_ART, style="bold cyan"))
     console.print()
     console.print(Panel("SCRIPETEREN TOOLS REPORT", border_style="yellow", expand=False))
     console.print()
     
-    # Animasi loading dengan efek
     loading_stages = [
-        ("⚙️  Memuat Tools", 0.7),
+        ("⚙️  Memuat Tools Premium...", 0.7),
         ("📡  Menyiapkan 500+ Provider...", 0.7),
         ("🔐  Mengaktifkan Mode Report Ahli...", 0.7),
         ("🌐  Menghubungkan ke Layanan Global...", 0.7),
-        ("Sistem Siap... ", 0.5)
+        ("🎯  Siap! Menyambut Anda, Tuan.", 0.5)
     ]
     
     with Progress(
@@ -98,17 +85,11 @@ def welcome_screen():
             progress.advance(task)
     
     console.print()
-    
-    # Pesan motivasi random
     msg = random.choice(MOTIVATIONAL_MESSAGES)
     console.print(Panel(msg, border_style="magenta", expand=False))
     console.print()
-    
-    # Dukungan GitHub
     console.print(Panel(GITHUB_SUPPORT, border_style="blue", expand=False))
     console.print()
-    
-    # Prompt Enter
     console.print("[bold yellow]⏎ Tekan Enter untuk masuk ke menu utama...[/bold yellow]")
     input()
     console.clear()
@@ -120,6 +101,62 @@ def load_config():
     except FileNotFoundError:
         console.print("[red]❌ config.json tidak ditemukan! Buat dari template.[/red]")
         sys.exit(1)
+
+def get_global_report_data():
+    """Kumpulkan data pengirim dan target di awal"""
+    console.print("\n[bold cyan]📝 DATA PENGIRIM & TARGET REPORT[/bold cyan]")
+    console.print("[dim]Isi data diri Anda sebagai pelapor, dan data target yang dilaporkan.[/dim]\n")
+    
+    report_data = {}
+    
+    # Data Pengirim
+    console.print("[bold yellow]--- Data Pengirim (Anda) ---[/bold yellow]")
+    report_data["sender_name"] = Prompt.ask("[bold cyan]Nama lengkap Anda[/bold cyan]", default="User")
+    report_data["sender_email"] = Prompt.ask("[bold cyan]Email Anda (untuk balasan)[/bold cyan]", default="user@example.com")
+    report_data["sender_phone"] = Prompt.ask("[bold cyan]Nomor telepon Anda[/bold cyan]", default="-")
+    
+    # Data Target
+    console.print("\n[bold yellow]--- Data Target (Yang Dilaporkan) ---[/bold yellow]")
+    report_data["target_type"] = Prompt.ask(
+        "[bold cyan]Jenis target[/bold cyan]",
+        choices=["nomor_telepon", "username", "id_akun", "rekening_bank", "domain_ip", "email", "lainnya"],
+        default="nomor_telepon"
+    )
+    report_data["target_value"] = Prompt.ask("[bold cyan]Masukkan data target[/bold cyan]")
+    report_data["target_description"] = Prompt.ask("[bold cyan]Deskripsi singkat masalah[/bold cyan]", default="Penipuan / Aktivitas mencurigakan")
+    
+    # Alasan umum (bisa diganti per kategori nanti)
+    console.print("\n[bold yellow]--- Alasan Laporan (Umum) ---[/bold yellow]")
+    reason_options = [
+        "Penipuan / Penipuan finansial",
+        "Pelecehan / Ancaman",
+        "Spam / Phishing",
+        "Konten ilegal / Ujaran kebencian",
+        "Pencurian identitas",
+        "Tindakan kriminal lainnya"
+    ]
+    for idx, r in enumerate(reason_options, 1):
+        console.print(f"  {idx}. {r}")
+    console.print(f"  {len(reason_options)+1}. Tulis sendiri")
+    choice = Prompt.ask("[bold green]Pilih alasan utama[/bold green]")
+    try:
+        idx = int(choice) - 1
+        if 0 <= idx < len(reason_options):
+            report_data["global_reason"] = reason_options[idx]
+        else:
+            report_data["global_reason"] = Prompt.ask("[bold cyan]Tulis alasan Anda[/bold cyan]")
+    except:
+        report_data["global_reason"] = Prompt.ask("[bold cyan]Tulis alasan Anda[/bold cyan]")
+    
+    # Konfirmasi
+    console.print("\n[bold green]Ringkasan Data:[/bold green]")
+    console.print(f"Pengirim: {report_data['sender_name']} ({report_data['sender_email']})")
+    console.print(f"Target: {report_data['target_type']} → {report_data['target_value']}")
+    console.print(f"Alasan: {report_data['global_reason']}")
+    if not Confirm.ask("[bold yellow]Lanjutkan dengan data ini?[/bold yellow]", default=True):
+        console.print("[red]Mengulang input data...[/red]")
+        return get_global_report_data()
+    return report_data
 
 def show_main_menu():
     console.clear()
@@ -205,17 +242,18 @@ def get_report_count():
 def get_delay():
     return float(Prompt.ask("[bold green]⏱️  Jeda antar kirim (detik, misal 0.5)[/bold green]", default="0.5"))
 
-def get_specific_input(category, config):
+def get_specific_input(category, global_data):
+    """Minta input tambahan sesuai kategori, gunakan global_data sebagai default"""
     extra = {}
     if category in ["game", "streaming", "forum"]:
-        extra["id_user"] = Prompt.ask("[bold cyan]🎮 Masukkan ID / Username target[/bold cyan]")
+        extra["id_user"] = Prompt.ask("[bold cyan]🎮 Masukkan ID / Username target[/bold cyan]", default=global_data.get("target_value", ""))
         if category == "game":
             extra["server"] = Prompt.ask("[bold cyan]🖥️  Server game (jika ada)[/bold cyan]", default="-")
     elif category in ["ecommerce", "ecommerce_intl", "marketplace"]:
         extra["order_id"] = Prompt.ask("[bold cyan]📦 Masukkan Order ID (jika ada)[/bold cyan]", default="-")
         extra["seller_name"] = Prompt.ask("[bold cyan]🏪 Nama penjual[/bold cyan]", default="-")
     elif category in ["bank", "bank_intl", "fintech"]:
-        extra["rekening"] = Prompt.ask("[bold cyan]🏦 Nomor rekening target[/bold cyan]", default=config.get("target_phone", ""))
+        extra["rekening"] = Prompt.ask("[bold cyan]🏦 Nomor rekening target[/bold cyan]", default=global_data.get("target_value", ""))
         extra["nama_pemilik"] = Prompt.ask("[bold cyan]🧑 Nama pemilik rekening (jika tahu)[/bold cyan]", default="-")
     elif category in ["travel", "jasa"]:
         extra["nama_driver"] = Prompt.ask("[bold cyan]🚗 Nama driver/freelancer[/bold cyan]", default="-")
@@ -223,38 +261,44 @@ def get_specific_input(category, config):
     elif category in ["pemerintah", "pemerintah_intl"]:
         extra["instansi"] = Prompt.ask("[bold cyan]🏛️  Instansi yang diatasnamakan[/bold cyan]", default="-")
     elif category in ["teknologi", "hosting", "domain"]:
-        extra["domain_ip"] = Prompt.ask("[bold cyan]🌐 Domain / IP target[/bold cyan]", default=config.get("target_phone", ""))
+        extra["domain_ip"] = Prompt.ask("[bold cyan]🌐 Domain / IP target[/bold cyan]", default=global_data.get("target_value", ""))
     else:
         extra["keterangan_tambahan"] = Prompt.ask("[bold cyan]📝 Keterangan tambahan (opsional)[/bold cyan]", default="-")
     return extra
 
-def get_report_reason(category):
+def get_report_reason(category, global_reason):
+    """Tawarkan alasan spesifik kategori, atau pakai global_reason"""
     reasons = get_reasons(category)
     console.print(f"\n[bold yellow]📌 Pilih alasan laporan untuk kategori '{category}':[/bold yellow]")
     for idx, r in enumerate(reasons, 1):
         console.print(f"  {idx}. {r}")
     console.print(f"  {len(reasons)+1}. ✏️  Tulis sendiri")
+    console.print(f"  {len(reasons)+2}. 🔄 Pakai alasan global: '{global_reason}'")
     choice = Prompt.ask("[bold green]👉 Pilih nomor[/bold green]")
     try:
         idx = int(choice) - 1
         if 0 <= idx < len(reasons):
             return reasons[idx]
-        else:
+        elif idx == len(reasons):
             return Prompt.ask("[bold cyan]✍️  Tulis alasan Anda[/bold cyan]")
+        elif idx == len(reasons)+1:
+            return global_reason
+        else:
+            return global_reason
     except:
-        return Prompt.ask("[bold cyan]✍️  Tulis alasan Anda[/bold cyan]")
+        return global_reason
 
-def run_reports(provider_names, config, count, delay):
+def run_reports(provider_names, global_data, config, count, delay):
     sender = Sender(config)
-    subject_base = f"Laporan dari {config.get('email_sender', 'User')}"
+    subject_base = f"Laporan dari {global_data.get('sender_name', 'User')}"
 
     specific_data = {}
     for name in provider_names:
         cat = PROVIDERS[name]["category"]
         if cat not in specific_data:
             console.print(f"\n[bold cyan]📂 Kategori: {cat}[/bold cyan]")
-            specific_data[cat] = get_specific_input(cat, config)
-            specific_data[cat]["reason"] = get_report_reason(cat)
+            specific_data[cat] = get_specific_input(cat, global_data)
+            specific_data[cat]["reason"] = get_report_reason(cat, global_data.get("global_reason", "Penipuan"))
 
     total_providers = len(provider_names)
     console.print(f"\n[bold cyan]🚀 Akan mengirim ke {total_providers} provider.[/bold cyan]")
@@ -281,20 +325,26 @@ def run_reports(provider_names, config, count, delay):
                     info = PROVIDERS[name]
                     cat = info["category"]
                     data = specific_data[cat]
+                    
+                    # Body email dengan data global + spesifik
                     body_lines = [
-                        f"📧 Laporan dari {config.get('email_sender', 'User')}",
-                        f"📂 Kategori: {cat}",
+                        f"📧 Laporan dari: {global_data.get('sender_name', 'User')}",
+                        f"📧 Email pengirim: {global_data.get('sender_email', '-')}",
+                        f"📱 Telepon pengirim: {global_data.get('sender_phone', '-')}",
                         "",
-                        "📋 Data spesifik:"
+                        "📋 Data Target:",
+                        f"  - Jenis: {global_data.get('target_type', '-')}",
+                        f"  - Nilai: {global_data.get('target_value', '-')}",
+                        f"  - Deskripsi: {global_data.get('target_description', '-')}",
+                        "",
+                        "📂 Kategori laporan: " + cat,
+                        "📌 Alasan: " + data.get('reason', 'Penipuan'),
+                        "",
+                        "📝 Data Spesifik Kategori:"
                     ]
                     for k, v in data.items():
                         if k != "reason" and v:
                             body_lines.append(f"  - {k}: {v}")
-                    body_lines.append("")
-                    body_lines.append(f"📌 Alasan: {data.get('reason', 'Penipuan')}")
-                    body_lines.append("")
-                    body_lines.append(f"📱 Nomor/akun yang dilaporkan: {config.get('target_phone', '')}")
-                    body_lines.append(f"📝 Deskripsi tambahan: {config.get('description', '')}")
                     body = "\n".join(body_lines)
                     subject = f"{subject_base} - {name}"
 
@@ -304,9 +354,8 @@ def run_reports(provider_names, config, count, delay):
                         result = sender.send_email(name, info["target"], subject, body)
                     elif method == "http":
                         payload = {
-                            "phone": config.get("target_phone", ""),
-                            "email": config.get("email_sender", ""),
-                            "description": config.get("description", ""),
+                            "sender": global_data.get("sender_email", ""),
+                            "target": global_data.get("target_value", ""),
                             "reason": data.get("reason", ""),
                             "extra": {k:v for k,v in data.items() if k != "reason"}
                         }
@@ -337,8 +386,10 @@ def run_reports(provider_names, config, count, delay):
         console.print(f"\n[bold yellow]⏹️  Dihentikan user. Total kiriman: {sent_total}[/bold yellow]")
 
 def main():
-    # Tampilan pembuka premium
     welcome_screen()
+    
+    # Kumpulkan data global di awal
+    global_data = get_global_report_data()
     
     config = load_config()
     while True:
@@ -367,7 +418,7 @@ def main():
 
         count = get_report_count()
         delay = get_delay()
-        run_reports(provider_names, config, count, delay)
+        run_reports(provider_names, global_data, config, count, delay)
 
         if not Confirm.ask("[bold cyan]🔙 Kembali ke menu utama?[/bold cyan]", default=True):
             break
