@@ -1,0 +1,8 @@
+{
+  "email_sender": "your_email@gmail.com",
+  "app_password": "abcd efgh ijkl mnop",
+  "target_phone": "+628123456789",
+  "target_username": "username_target",
+  "description": "Contoh laporan penipuan untuk testing sendiri",
+  "default_reason": "Saya melaporkan aktivitas mencurigakan ini untuk keamanan bersama."
+}
