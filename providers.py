@@ -386,17 +386,19 @@ PROVIDERS = {
     "poshmark": {"category": "marketplace", "method": "email", "target": "support@poshmark.com"},
     "depop": {"category": "marketplace", "method": "email", "target": "support@depop.com"},
 
-    # ===== KEUANGAN & ASURANSI (15+) =====
-    "bnilife": {"category": "keuangan", "method": "email", "target": "cs@bnilife.co.id"},
-    "aia": {"category": "keuangan", "method": "email", "target": "support@aia.com"},
-    "prudential": {"category": "keuangan", "method": "email", "target": "support@prudential.com"},
-    "allianz": {"category": "keuangan", "method": "email", "target": "support@allianz.com"},
-    "sequis": {"category": "keuangan", "method": "email", "target": "support@sequis.com"},
-    "manulife": {"category": "keuangan", "method": "email", "target": "support@manulife.com"},
-    "axa": {"category": "keuangan", "method": "email", "target": "support@axa.com"},
-    "saham": {"category": "keuangan", "method": "email", "target": "support@saham.com"},
-    "aplikasi": {"category": "keuangan", "method": "email", "target": "support@aplikasi.com"},
-    "fund": {"category": "keuangan", "method": "email", "target": "support@fund.com"}
+    
+# ===== KEUANGAN & ASURANSI (15+) =====
+"bnilife": {"category": "keuangan", "method": "email", "target": "cs@bnilife.co.id"},
+"aia": {"category": "keuangan", "method": "email", "target": "support@aia.com"},
+"prudential": {"category": "keuangan", "method": "email", "target": "support@prudential.com"},
+"allianz": {"category": "keuangan", "method": "email", "target": "support@allianz.com"},
+"sequis": {"category": "keuangan", "method": "email", "target": "support@sequis.com"},
+"manulife": {"category": "keuangan", "method": "email", "target": "support@manulife.com"},
+"axa": {"category": "keuangan", "method": "email", "target": "support@axa.com"},
+"saham": {"category": "keuangan", "method": "email", "target": "support@saham.com"},
+"aplikasi": {"category": "keuangan", "method": "email", "target": "support@aplikasi.com"},
+"fund": {"category": "keuangan", "method": "email", "target": "support@fund.com"}
+
 # ===== BANK DAERAH INDONESIA (15+) =====
 "bjb": {"category": "bank", "method": "email", "target": "cs@bankbjb.co.id"},
 "bpd_jatim": {"category": "bank", "method": "email", "target": "callcenter@bankjatim.co.id"},
