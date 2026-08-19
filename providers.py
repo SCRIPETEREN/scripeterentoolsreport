@@ -431,3 +431,20 @@ PROVIDERS = {
     "aplikasi": {"category": "keuangan", "method": "email", "target": "support@aplikasi.com"},
     "fund": {"category": "keuangan", "method": "email", "target": "support@fund.com"},
 }
+
+# ===== Fungsi tambahan untuk main.py =====
+
+def get_categories():
+    """Mengembalikan daftar kategori unik dari semua provider"""
+    categories = set()
+    for info in PROVIDERS.values():
+        categories.add(info.get("category", "umum"))
+    return sorted(list(categories))
+
+def get_providers_by_category(category):
+    """Mengembalikan dictionary provider yang termasuk dalam kategori tertentu"""
+    result = {}
+    for name, info in PROVIDERS.items():
+        if info.get("category") == category:
+            result[name] = info
+    return result
