@@ -5,5 +5,7 @@ Report ke 500+ layanan (sosmed, e-commerce, bank, pemerintah, internasional) dal
 ## Instalasi
 
 git clone https://github.com/SCRIPETEREN/scripeterentoolsreport.git
+
 cd scripeterentoolsreport
+
 pip install -r requirements.txt
