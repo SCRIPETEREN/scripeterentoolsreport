@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# main.py – SCRIPETEREN TOOLS REPORT
+# main.py – SCRIPETEREN TOOLS REPORT – Fix Import Password
 
 import json
 import sys
@@ -7,12 +7,13 @@ import time
 import smtplib
 import ssl
 import random
+import getpass
 from email.mime.text import MIMEText
 
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
-from rich.prompt import Prompt, IntPrompt, Confirm, Password
+from rich.prompt import Prompt, IntPrompt, Confirm
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich import box
 from rich.text import Text
@@ -112,10 +113,10 @@ def get_global_report_data():
     report_data["sender_name"] = Prompt.ask("[bold cyan]Nama lengkap Anda[/bold cyan]", default="User")
     report_data["sender_email"] = Prompt.ask("[bold cyan]Email Gmail Anda (pengirim)[/bold cyan]", default="user@gmail.com")
     
-    # App Password - diinput dengan mode tersembunyi
+    # App Password - menggunakan getpass (tersembunyi)
     console.print("[bold yellow]--- App Password Gmail ---[/bold yellow]")
     console.print("[dim]Buat App Password di: myaccount.google.com/apppasswords[/dim]")
-    report_data["app_password"] = Password.ask("[bold cyan]Masukkan App Password 16 karakter[/bold cyan]")
+    report_data["app_password"] = getpass.getpass("[bold cyan]Masukkan App Password 16 karakter: [/bold cyan]")
     
     report_data["sender_phone"] = Prompt.ask("[bold cyan]Nomor telepon Anda[/bold cyan]", default="-")
     
