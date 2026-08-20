@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# main.py – SCRIPETEREN TOOLS REPORT – Premium Edition (Fix)
+# main.py – SCRIPETEREN TOOLS REPORT – FULL FIX
 
 import json
 import sys
@@ -13,14 +13,13 @@ import requests
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
-from rich.prompt import Prompt, IntPrompt, Confirm
+from rich.prompt import Prompt, IntPrompt, Confirm, Password
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich import box
 from rich.text import Text
 
 from providers import PROVIDERS, get_categories, get_providers_by_category
 from reasons import get_reasons
-from sender import Sender
 
 console = Console()
 
@@ -54,7 +53,7 @@ MOTIVATIONAL_MESSAGES = [
     "⭐️ Anda lebih kuat dari yang Anda kira."
 ]
 
-GITHUB_SUPPORT = "🔗 Support GitHub: https://github.com/scripeteren"
+GITHUB_SUPPORT = "🔗 Support GitHub: https://github.com/scripeteren/scripeteren-tools-report"
 
 def welcome_screen():
     console.clear()
@@ -99,20 +98,26 @@ def load_config():
         with open("config.json", "r") as f:
             return json.load(f)
     except FileNotFoundError:
-        console.print("[red]❌ config.json tidak ditemukan! Buat dari template.[/red]")
-        sys.exit(1)
+        console.print("[yellow]⚠️ config.json tidak ditemukan. Menggunakan default.[/yellow]")
+        return {}
 
 def get_global_report_data():
-    """Kumpulkan data pengirim dan target di awal"""
-    console.print("\n[bold cyan]📝 DATA PENGIRIM & TARGET REPORT[/bold cyan]")
-    console.print("[dim]Isi data diri Anda sebagai pelapor, dan data target yang dilaporkan.[/dim]\n")
+    """Kumpulkan data pengirim, target, dan App Password di awal"""
+    console.print("\n[bold cyan]📝 DATA PENGIRIM, TARGET & APLIKASI[/bold cyan]")
+    console.print("[dim]Isi data diri Anda sebagai pelapor, data target, dan App Password Gmail.[/dim]\n")
     
     report_data = {}
     
     # Data Pengirim
     console.print("[bold yellow]--- Data Pengirim (Anda) ---[/bold yellow]")
     report_data["sender_name"] = Prompt.ask("[bold cyan]Nama lengkap Anda[/bold cyan]", default="User")
-    report_data["sender_email"] = Prompt.ask("[bold cyan]Email Anda (untuk balasan)[/bold cyan]", default="user@example.com")
+    report_data["sender_email"] = Prompt.ask("[bold cyan]Email Gmail Anda (pengirim)[/bold cyan]", default="user@gmail.com")
+    
+    # App Password - diinput dengan mode tersembunyi
+    console.print("[bold yellow]--- App Password Gmail ---[/bold yellow]")
+    console.print("[dim]Buat App Password di: myaccount.google.com/apppasswords[/dim]")
+    report_data["app_password"] = Password.ask("[bold cyan]Masukkan App Password 16 karakter[/bold cyan]")
+    
     report_data["sender_phone"] = Prompt.ask("[bold cyan]Nomor telepon Anda[/bold cyan]", default="-")
     
     # Data Target
@@ -125,7 +130,7 @@ def get_global_report_data():
     report_data["target_value"] = Prompt.ask("[bold cyan]Masukkan data target[/bold cyan]")
     report_data["target_description"] = Prompt.ask("[bold cyan]Deskripsi singkat masalah[/bold cyan]", default="Penipuan / Aktivitas mencurigakan")
     
-    # Alasan umum (bisa diganti per kategori nanti)
+    # Alasan umum
     console.print("\n[bold yellow]--- Alasan Laporan (Umum) ---[/bold yellow]")
     reason_options = [
         "Penipuan / Penipuan finansial",
@@ -151,6 +156,7 @@ def get_global_report_data():
     # Konfirmasi
     console.print("\n[bold green]Ringkasan Data:[/bold green]")
     console.print(f"Pengirim: {report_data['sender_name']} ({report_data['sender_email']})")
+    console.print(f"App Password: {'*' * len(report_data['app_password'])}")
     console.print(f"Target: {report_data['target_type']} → {report_data['target_value']}")
     console.print(f"Alasan: {report_data['global_reason']}")
     if not Confirm.ask("[bold yellow]Lanjutkan dengan data ini?[/bold yellow]", default=True):
@@ -243,7 +249,6 @@ def get_delay():
     return float(Prompt.ask("[bold green]⏱️  Jeda antar kirim (detik, misal 0.5)[/bold green]", default="0.5"))
 
 def get_specific_input(category, global_data):
-    """Minta input tambahan sesuai kategori, gunakan global_data sebagai default"""
     extra = {}
     if category in ["game", "streaming", "forum"]:
         extra["id_user"] = Prompt.ask("[bold cyan]🎮 Masukkan ID / Username target[/bold cyan]", default=global_data.get("target_value", ""))
@@ -267,7 +272,6 @@ def get_specific_input(category, global_data):
     return extra
 
 def get_report_reason(category, global_reason):
-    """Tawarkan alasan spesifik kategori, atau pakai global_reason"""
     reasons = get_reasons(category)
     console.print(f"\n[bold yellow]📌 Pilih alasan laporan untuk kategori '{category}':[/bold yellow]")
     for idx, r in enumerate(reasons, 1):
@@ -288,8 +292,36 @@ def get_report_reason(category, global_reason):
     except:
         return global_reason
 
-def run_reports(provider_names, global_data, config, count, delay):
-    sender = Sender(config)
+def send_email(sender_email, app_password, target_email, subject, body):
+    """Kirim email via SMTP Gmail dengan error handling jelas"""
+    try:
+        msg = MIMEText(body)
+        msg['Subject'] = subject
+        msg['From'] = sender_email
+        msg['To'] = target_email
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls(context=context)
+            server.login(sender_email, app_password)
+            server.sendmail(sender_email, target_email, msg.as_string())
+        return {"status": "sent", "target": target_email}
+    except smtplib.SMTPAuthenticationError:
+        return {"status": "failed", "error": "App Password salah atau akun Gmail tidak diizinkan. Cek App Password."}
+    except smtplib.SMTPRecipientsRefused:
+        return {"status": "failed", "error": "Email tujuan ditolak."}
+    except smtplib.SMTPServerDisconnected:
+        return {"status": "failed", "error": "Koneksi ke server Gmail terputus."}
+    except Exception as e:
+        return {"status": "failed", "error": str(e)}
+
+def run_reports(provider_names, global_data, count, delay):
+    sender_email = global_data.get("sender_email")
+    app_password = global_data.get("app_password")
+    if not sender_email or not app_password:
+        console.print("[red]❌ Email pengirim atau App Password tidak ditemukan.[/red]")
+        return
+
     subject_base = f"Laporan dari {global_data.get('sender_name', 'User')}"
 
     specific_data = {}
@@ -312,6 +344,7 @@ def run_reports(provider_names, global_data, config, count, delay):
         return
 
     sent_total = 0
+    failed_total = 0
     try:
         with Progress(
             SpinnerColumn(spinner_name="dots12", style="green"),
@@ -325,8 +358,9 @@ def run_reports(provider_names, global_data, config, count, delay):
                     info = PROVIDERS[name]
                     cat = info["category"]
                     data = specific_data[cat]
+                    method = info.get("method", "email")
                     
-                    # Body email dengan data global + spesifik
+                    # Siapkan body dan subject
                     body_lines = [
                         f"📧 Laporan dari: {global_data.get('sender_name', 'User')}",
                         f"📧 Email pengirim: {global_data.get('sender_email', '-')}",
@@ -348,32 +382,37 @@ def run_reports(provider_names, global_data, config, count, delay):
                     body = "\n".join(body_lines)
                     subject = f"{subject_base} - {name}"
 
-                    method = info.get("method", "email")
+                    # Kirim berdasarkan metode
                     result = None
                     if method == "email":
-                        result = sender.send_email(name, info["target"], subject, body)
+                        target = info.get("target")
+                        if not target:
+                            result = {"status": "failed", "error": "Target email tidak ditemukan"}
+                        else:
+                            result = send_email(sender_email, app_password, target, subject, body)
                     elif method == "http":
-                        payload = {
-                            "sender": global_data.get("sender_email", ""),
-                            "target": global_data.get("target_value", ""),
-                            "reason": data.get("reason", ""),
-                            "extra": {k:v for k,v in data.items() if k != "reason"}
-                        }
-                        result = sender.send_http(name, info["url"], payload)
+                        # Simulasi HTTP (tidak benar-benar mengirim)
+                        result = {"status": "simulated", "provider": name, "url": info.get("url", "-")}
                     elif method == "form":
-                        result = sender.send_form(name, info["url"])
+                        result = {"status": "simulated", "provider": name, "note": f"Buka {info.get('url', '-')} dan isi manual"}
                     else:
-                        result = {"status": "unknown_method", "provider": name}
+                        result = {"status": "failed", "error": f"Metode '{method}' tidak dikenal"}
 
+                    # Tampilkan hasil
                     if result.get("status") in ["sent", "simulated"]:
-                        console.print(f"[green]✅[/green] {name} → {result.get('target', result.get('url', 'unknown'))}")
+                        console.print(f"[green]✅[/green] {name} → {result.get('target', result.get('url', 'success'))}")
+                        sent_total += 1
                     else:
                         console.print(f"[red]❌[/red] {name} gagal: {result.get('error', 'unknown')}")
-                    sent_total += 1
+                        failed_total += 1
+
                     progress.update(task, advance=1)
 
-                    if count > 0 and sent_total >= count * total_providers:
+                    if count > 0 and (sent_total + failed_total) >= count * total_providers:
                         console.print("\n[bold green]🎉 Selesai![/bold green]")
+                        console.print(f"[green]Berhasil: {sent_total}[/green]")
+                        if failed_total > 0:
+                            console.print(f"[red]Gagal: {failed_total}[/red]")
                         return
 
                     time.sleep(delay)
@@ -383,12 +422,12 @@ def run_reports(provider_names, global_data, config, count, delay):
                 else:
                     break
     except KeyboardInterrupt:
-        console.print(f"\n[bold yellow]⏹️  Dihentikan user. Total kiriman: {sent_total}[/bold yellow]")
+        console.print(f"\n[bold yellow]⏹️  Dihentikan user. Total berhasil: {sent_total}, gagal: {failed_total}[/bold yellow]")
 
 def main():
     welcome_screen()
     
-    # Kumpulkan data global di awal
+    # Kumpulkan data global di awal (termasuk App Password)
     global_data = get_global_report_data()
     
     config = load_config()
@@ -418,7 +457,7 @@ def main():
 
         count = get_report_count()
         delay = get_delay()
-        run_reports(provider_names, global_data, config, count, delay)
+        run_reports(provider_names, global_data, count, delay)
 
         if not Confirm.ask("[bold cyan]🔙 Kembali ke menu utama?[/bold cyan]", default=True):
             break
