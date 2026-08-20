@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# main.py – SCRIPETEREN TOOLS REPORT – Plain Edition
+# main.py – SCRIPETEREN TOOLS REPORT
 
 import json
 import sys
