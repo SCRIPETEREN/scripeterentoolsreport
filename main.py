@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# main.py – SCRIPETEREN TOOLS REPORT – Fix Import Password
+# main.py – SCRIPETEREN TOOLS REPORT
 
 import json
 import sys
