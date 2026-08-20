@@ -1,6 +1,6 @@
 # SCRIPETEREN TOOLS REPORT
 
-Report ke 500+ layanan (sosmed, e-commerce, bank, pemerintah, internasional) dalam satu tools terminal interaktif. **Hanya untuk edukasi dan testing akun sendiri.**
+Report ke 500+ layanan (sosmed, e-commerce, bank, pemerintah, internasional) dalam satu tools terminal interaktif. **Jangan di salah gunakan**
 
 ## Instalasi
 
